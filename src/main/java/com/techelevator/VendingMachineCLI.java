@@ -68,7 +68,7 @@ public class VendingMachineCLI {
 						} else if (feedMoneyChoice.equals(FEED_MONEY_20)) {
 							currentMoneyProvided += 20.0;
 						}
-						Calculate.log("Feed Money", moneyBefore, currentMoneyProvided);
+						LogUpdate.log("Feed Money", moneyBefore, currentMoneyProvided);
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 						if (itemsChoice.getStock() < 1) {
@@ -82,14 +82,14 @@ public class VendingMachineCLI {
 							itemsChoice.sellProduct();
 //							SalesReport.addToReport(itemsChoice.getName());
 							currentMoneyProvided -= itemsChoice.getPrice();
-							Calculate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
+							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
 						}
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 						double moneyBefore = currentMoneyProvided;
 
 						System.out.println(makeChange(currentMoneyProvided));
 						currentMoneyProvided = 0.0;
-						Calculate.log("give change", moneyBefore, currentMoneyProvided);
+						LogUpdate.log("give change", moneyBefore, currentMoneyProvided);
 						break;
 					}
 				}

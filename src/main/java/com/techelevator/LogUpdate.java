@@ -8,7 +8,7 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Calculate {
+public class LogUpdate {
 
     public static void log(String action, double moneyBefore, double moneyAfter) {
         LocalDateTime now = LocalDateTime.now();
