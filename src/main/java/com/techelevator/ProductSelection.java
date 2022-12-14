@@ -31,7 +31,7 @@ public class ProductSelection {
     private List<String> testList = new ArrayList<>();
 
     public String userInput;
-    File inventory = new File("C:\\Users\\Ash\\Desktop\\module-1-capstone\\vendingmachine.csv");
+    File inventory = new File("vendingmachine.csv");
 
     ////////////////
     //Constructors//
