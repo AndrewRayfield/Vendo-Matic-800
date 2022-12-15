@@ -1,8 +1,6 @@
 package com.techelevator;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class ProductSelection extends Inventory{
@@ -26,6 +24,7 @@ public class ProductSelection extends Inventory{
     ////////////////
     public String userInput;
     private double balance = 5.00;
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     Inventory inv = new Inventory();
     ////////////////
@@ -49,28 +48,44 @@ public class ProductSelection extends Inventory{
     // A method for validating the user's selection
     //if the selection is valid, will print the results from itemReader()
     public void selectProduct(String selection){
-        //Items items = new Items();
         //Scanner sc = new Scanner(System.in);
         //System.out.println("Please make a selection: ");
         //userInput = sc.nextLine();
-        //itemReader(userInput);
+
         for(Items entry : INVENTORY_ARRAY){
-            if(entry.getLocation().equals(selection) && entry.getStock() > 0 ) {
-                //print name, cost, money remaining
+            if(entry.getLocation().equalsIgnoreCase(selection) && entry.getStock() > 0 && balance >= entry.getPrice() ) {
                 balance -= entry.getPrice();
-                System.out.println(entry.getName() + " " + entry.getPrice() + " " + balance);
+                System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
+                // Call the purchase menu here
+                // will render break redundant
                 break;
 
-            }else if(entry.getLocation().equals(userInput) && entry.getStock() < 1){
-                System.out.println("Out of stock.");
-                break;
-
-            }else if(!entry.getLocation().equals(selection)){
-                System.out.println("Please make a valid selection");
+            }
+            if(entry.getLocation().equalsIgnoreCase(userInput) && entry.getStock() < 1) {
+                System.out.println("Sorry, out of stock.");
+                // Call to purchase menu here
+                // will render break redundant
                 break;
             }
+            if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()){
+                System.out.println("Insufficient funds.");
+                // Call to purchase menu here
+                // will render break redundant
+                break;
+            }
+
+                //Issue with invalid selection, likely due to for loop
+                //while false, loop until true
+                // if true yada yada
+                // if never true, show invalid selection message
+//
+//            }else if(!entry.getLocation().equals(selection)){
+//                System.out.println("Please make a valid selection");
+//                break;
+//            }
+
         }
     }
 }
