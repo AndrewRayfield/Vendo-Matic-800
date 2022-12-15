@@ -38,7 +38,7 @@ public class Inventory {
     }
     public static void displayInventory(){
         for (Items items : INVENTORY_ARRAY) {
-            System.out.println(items);
+            System.out.println(items + " | " + items.getStock() + " available");
         }
     }
 

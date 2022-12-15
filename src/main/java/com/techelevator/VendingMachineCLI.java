@@ -10,7 +10,8 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_OPTION_EXIT };
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
 	/////////////////////////////////
 	//Purchase Menu/////////////////
 	private static final String PURCHASE_MENU_FEED_MONEY = "Feed Money";
@@ -31,6 +32,7 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 	private PurchaseMenu purchaseMenu;
+	private SalesReport salesReport = new SalesReport();
 
 	public VendingMachineCLI(Menu menu , PurchaseMenu purchaseMenu) {
 		this.menu = menu;
@@ -38,24 +40,42 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
+		//Might need to be in ProductSelection Class?
 		Inventory.restock();
+		salesReport.createReport();
+
+		//Does this need to be in another class?
 		double currentMoneyProvided = 0;
 
 		while (true) {
+			//Get choice using menu class
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items
+				// display vending machine items from Inventory class
 				Inventory.displayInventory();
+
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				//Used similarly to menu
 				// do purchase
 				while (true) {
+					//formatting money
 					NumberFormat currency = NumberFormat.getCurrencyInstance();
 					System.out.println("Current Money Provided: " + currency.format(currentMoneyProvided));
+
+					//Get choice using PurchaseMenu class
+					//getChoiceFromOptions is taking from Menu Class
 					String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+
+					//Purchase option selection start
+					//Feed Money Option
 					if (purchaseChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
+						//Set to create a starting amount
 						double moneyBefore = currentMoneyProvided;
+
+						//Does this need to be taken from Menu class?
 						String feedMoneyChoice = (String) menu.getChoiceFromOptions(FEED_MONEY_OPTIONS);
+
 						/////Add money
 						if (feedMoneyChoice.equals(FEED_MONEY_1)) {
 							currentMoneyProvided += 1.0;
@@ -68,9 +88,15 @@ public class VendingMachineCLI {
 						} else if (feedMoneyChoice.equals(FEED_MONEY_20)) {
 							currentMoneyProvided += 20.0;
 						}
+
+						//Logs starting amount and end amount in Log.txt
 						LogUpdate.log("Feed Money", moneyBefore, currentMoneyProvided);
+
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
+						//Will you please explain this one?
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
+
+						//Decides if product available or if there is enough money
 						if (itemsChoice.getStock() < 1) {
 							System.out.println("Product Is Out Of Stock");
 						} else if (currentMoneyProvided < itemsChoice.getPrice()) {
@@ -80,7 +106,7 @@ public class VendingMachineCLI {
 
 							System.out.println(itemsChoice.dispensingMessage());
 							itemsChoice.sellProduct();
-//							SalesReport.addToReport(itemsChoice.getName());
+							salesReport.addToReport(itemsChoice.getName(), 1);
 							currentMoneyProvided -= itemsChoice.getPrice();
 							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
 						}
@@ -92,7 +118,12 @@ public class VendingMachineCLI {
 						LogUpdate.log("give change", moneyBefore, currentMoneyProvided);
 						break;
 					}
+					//Purchase Option Selection end
 				}
+			} else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
+				salesReport.displayReport();
+			} else {
+				System.exit(0);
 			}
 		}
 	}
