@@ -97,6 +97,7 @@ public class VendingMachineCLI {
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
 						//Decides if product available or if there is enough money
+						// Out of stock message should be during product selection
 						if (itemsChoice.getStock() < 1) {
 							System.out.println("Product Is Out Of Stock");
 						} else if (currentMoneyProvided < itemsChoice.getPrice()) {

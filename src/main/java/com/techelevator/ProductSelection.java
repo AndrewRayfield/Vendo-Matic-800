@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProductSelection {
+public class ProductSelection extends Inventory{
 
     // Class for product selection
 
@@ -24,19 +24,19 @@ public class ProductSelection {
     ////////////////
     //Declarations//
     ////////////////
-    private double balance = 5.00;
-    public int stock = 5;
-
-    private String[] lineSplit;
-    private List<String> testList = new ArrayList<>();
-
     public String userInput;
-    File inventory = new File("vendingmachine.csv");
+    private double balance = 5.00;
 
+    Inventory inv = new Inventory();
     ////////////////
     //Constructors//
     ////////////////
 
+    //Constructor that takes the balance from the feed money method,
+    //adjusts the balance in selectProduct()
+    public ProductSelection(double balance){
+        this.balance = balance;
+    }
     public ProductSelection(){
 
     }
@@ -45,79 +45,32 @@ public class ProductSelection {
     //Methods//
     ///////////
 
-    // A method for reading the inventory, acting as a placeholder until all classes are combined
-    public void fillProduct () {
-        //Reads the inventory file
-        try (Scanner sc = new Scanner(inventory)) {
-            System.out.println("open inventory file");
-            while (sc.hasNextLine()) {
-                String textLine = sc.nextLine();
-                //System.out.println(textLine);
-                testList.add(textLine);
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
 
     // A method for validating the user's selection
     //if the selection is valid, will print the results from itemReader()
-    public void selectProduct(String userInput){
+    public void selectProduct(String selection){
+        //Items items = new Items();
         //Scanner sc = new Scanner(System.in);
-        for(String entry : testList){
-            //Selection valid and has stock
-            if(entry.contains(userInput) && stock > 0){
-                //Dispensed product prints name, cost, money remaining, then special item message
-                //System.out.println(entry.contains(userInput));
-                //System.out.println(itemReader(userInput));
+        //System.out.println("Please make a selection: ");
+        //userInput = sc.nextLine();
+        //itemReader(userInput);
+        for(Items entry : INVENTORY_ARRAY){
+            if(entry.getLocation().equals(selection) && entry.getStock() > 0 ) {
+                //print name, cost, money remaining
+                balance -= entry.getPrice();
+                System.out.println(entry.getName() + " " + entry.getPrice() + " " + balance);
+                System.out.println(entry.dispensingMessage());
+                entry.sellProduct();
                 break;
 
-                //Selection valid but no stock
-            }else if(entry.contains(userInput) && stock < 1){
-                System.out.println("Sold out!");
+            }else if(entry.getLocation().equals(userInput) && entry.getStock() < 1){
+                System.out.println("Out of stock.");
                 break;
-            }else if(!entry.contains(userInput)){
-                //System.out.println("false");
-                //break;
-            }
 
-            // Invalid selection, stock irrelevant
-//            if(entry.contains(userInput)){
-//                System.out.println("Please make a valid selection.");
-//            }
-        }
-    }
-
-    //A method for getting the relevant inventory information from a valid user selection
-    public String itemReader(String userChoice){
-        String name = "";
-        double price = 0.0;
-        String type = "";
-
-        //Loops through each row of the inventory file
-        //Then splits each part of the row into a String array
-        // Makes a switch specific iterator to fill the related item information
-
-        for (String item : testList) {
-            if(item.contains(userChoice)) {
-                lineSplit = item.split("\\|");
-                for (int i = 1; i < lineSplit.length; i++) {
-                    // i is initialized at 1 to ignore the [0] index, which is the vending code
-                    switch (i) {
-                        case 1:
-                            name = lineSplit[i];
-                            break;
-
-                        case 2:
-                            price = Double.parseDouble(lineSplit[i]);
-                            break;
-                        case 3:
-                            type = lineSplit[i];
-                    }
-                }
+            }else if(!entry.getLocation().equals(selection)){
+                System.out.println("Please make a valid selection");
+                break;
             }
         }
-        return name + " " + price + " " + type;
     }
 }
