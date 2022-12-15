@@ -2,7 +2,7 @@ package com.techelevator;
 
 import org.junit.Test;
 
-public class ProductSelectionTest extends Inventory {
+public class ProductSelectionTest extends ProductSelection {
 
     ProductSelection ps = new ProductSelection();
 
@@ -45,6 +45,7 @@ public class ProductSelectionTest extends Inventory {
     public void noStockTest() throws Exception{
         ps = new ProductSelection(5);
         ps.userInput = "B4";
+
         for(Items item : INVENTORY_ARRAY){
             while (item.getLocation().equalsIgnoreCase(ps.userInput)) {
                 item.setStock(0);
@@ -53,6 +54,16 @@ public class ProductSelectionTest extends Inventory {
             }
         }
         //ps.selectProduct(ps.userInput);
+    }
+
+    @Test
+    public void validCheckTest() throws Exception{
+        ps.checkSelection("A1");
+    }
+
+    @Test
+    public void invalidCheckTest() throws Exception{
+        ps.checkSelection("G8");
     }
 
 

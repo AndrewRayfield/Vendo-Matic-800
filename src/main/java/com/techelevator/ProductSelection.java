@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ProductSelection extends Inventory{
@@ -44,6 +45,21 @@ public class ProductSelection extends Inventory{
     //Methods//
     ///////////
 
+    public void checkSelection(String selection){
+        boolean valid = false;
+        for(Items entry : INVENTORY_ARRAY) {
+
+            if (entry.getLocation().equalsIgnoreCase(selection)) {
+                valid = true;
+                selectProduct(selection);
+                break;
+            }
+        }
+        if(!valid){
+            System.out.println("Invalid selection");
+        }
+
+    }
 
     // A method for validating the user's selection
     //if the selection is valid, will print the results from itemReader()
@@ -58,6 +74,7 @@ public class ProductSelection extends Inventory{
                 System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
+                // Log the purchase here
                 // Call the purchase menu here
                 // will render break redundant
                 break;
@@ -69,22 +86,12 @@ public class ProductSelection extends Inventory{
                 // will render break redundant
                 break;
             }
-            if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()){
+            if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()) {
                 System.out.println("Insufficient funds.");
                 // Call to purchase menu here
                 // will render break redundant
                 break;
             }
-
-                //Issue with invalid selection, likely due to for loop
-                //while false, loop until true
-                // if true yada yada
-                // if never true, show invalid selection message
-//
-//            }else if(!entry.getLocation().equals(selection)){
-//                System.out.println("Please make a valid selection");
-//                break;
-//            }
 
         }
     }
