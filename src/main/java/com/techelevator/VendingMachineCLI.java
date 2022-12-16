@@ -10,7 +10,7 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
 	/////////////////////////////////
 	//Purchase Menu/////////////////
@@ -106,7 +106,7 @@ public class VendingMachineCLI {
 
 							System.out.println(itemsChoice.dispensingMessage());
 							itemsChoice.sellProduct();
-							salesReport.addToReport(itemsChoice.getName(), 1);
+							salesReport.addToReport(itemsChoice.getName());
 							currentMoneyProvided -= itemsChoice.getPrice();
 							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
 						}
@@ -121,7 +121,7 @@ public class VendingMachineCLI {
 					//Purchase Option Selection end
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
-				salesReport.displayReport();
+				salesReport.runReport();
 			} else {
 				System.exit(0);
 			}
@@ -140,9 +140,6 @@ public class VendingMachineCLI {
 
 		return "Returning "+ numOfQuarters + " quarters, " + numOfDimes + " dimes, and " + numOfNickles + " nickles.";
 	}
-
-
-
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);

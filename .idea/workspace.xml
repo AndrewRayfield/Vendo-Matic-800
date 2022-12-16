@@ -5,30 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1168c97-558d-432f-acdf-9b991f8f3624" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_all_1_10_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/module-1-capstone.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_13_2022_8_19_PM_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_13_2022_8_19_PM__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/SalesReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/ProductSelectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/techelevator/ProductSelection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/LoggerTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/ProductSelectionTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/view/MenuTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/placeholder.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SalesReport2022-12-14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/SalesReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/SalesReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/SalesReport.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -66,9 +49,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
     "last_opened_file_path": "C:/Users/Ash/Desktop/module-1-capstone"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.techelevator" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ProductSelectionTest.ProductSelection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module-1-capstone" />

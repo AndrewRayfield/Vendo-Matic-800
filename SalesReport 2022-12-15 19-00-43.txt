@@ -1,6 +1,6 @@
 Stackers | 0
 Cowtales | 0
-Cola | 0
+Cola | 1
 Heavy | 0
 Cloud Popcorn | 0
 Dr. Salt | 0
@@ -15,4 +15,4 @@ U-Chews | 0
 Grain Waves | 0
 Chiclets | 0
 
-**TOTAL SALES** $0.00
+**TOTAL SALES** $1.25
