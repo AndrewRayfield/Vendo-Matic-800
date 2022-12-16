@@ -1,11 +1,10 @@
 package com.techelevator;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class ProductSelection {
+public class ProductSelection extends Inventory{
 
     // Class for product selection
 
@@ -24,19 +23,20 @@ public class ProductSelection {
     ////////////////
     //Declarations//
     ////////////////
-    private double balance = 5.00;
-    public int stock = 5;
-
-    private String[] lineSplit;
-    private List<String> testList = new ArrayList<>();
-
     public String userInput;
-    File inventory = new File("vendingmachine.csv");
+    private double balance = 5.00;
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
 
+    Inventory inv = new Inventory();
     ////////////////
     //Constructors//
     ////////////////
 
+    //Constructor that takes the balance from the feed money method,
+    //adjusts the balance in selectProduct()
+    public ProductSelection(double balance){
+        this.balance = balance;
+    }
     public ProductSelection(){
 
     }
@@ -45,79 +45,54 @@ public class ProductSelection {
     //Methods//
     ///////////
 
-    // A method for reading the inventory, acting as a placeholder until all classes are combined
-    public void fillProduct () {
-        //Reads the inventory file
-        try (Scanner sc = new Scanner(inventory)) {
-            System.out.println("open inventory file");
-            while (sc.hasNextLine()) {
-                String textLine = sc.nextLine();
-                //System.out.println(textLine);
-                testList.add(textLine);
-            }
+    public void checkSelection(String selection){
+        boolean valid = false;
+        for(Items entry : INVENTORY_ARRAY) {
 
-        } catch (Exception e) {
-            System.out.println("Error");
+            if (entry.getLocation().equalsIgnoreCase(selection)) {
+                valid = true;
+                selectProduct(selection);
+                break;
+            }
         }
+        if(!valid){
+            System.out.println("Invalid selection");
+        }
+
     }
 
     // A method for validating the user's selection
     //if the selection is valid, will print the results from itemReader()
-    public void selectProduct(String userInput){
+    public void selectProduct(String selection){
         //Scanner sc = new Scanner(System.in);
-        for(String entry : testList){
-            //Selection valid and has stock
-            if(entry.contains(userInput) && stock > 0){
-                //Dispensed product prints name, cost, money remaining, then special item message
-                //System.out.println(entry.contains(userInput));
-                //System.out.println(itemReader(userInput));
+        //System.out.println("Please make a selection: ");
+        //userInput = sc.nextLine();
+
+        for(Items entry : INVENTORY_ARRAY){
+            if(entry.getLocation().equalsIgnoreCase(selection) && entry.getStock() > 0 && balance >= entry.getPrice() ) {
+                balance -= entry.getPrice();
+                System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
+                System.out.println(entry.dispensingMessage());
+                entry.sellProduct();
+                // Log the purchase here
+                // Call the purchase menu here
+                // will render break redundant
                 break;
 
-                //Selection valid but no stock
-            }else if(entry.contains(userInput) && stock < 1){
-                System.out.println("Sold out!");
+            }
+            if(entry.getLocation().equalsIgnoreCase(userInput) && entry.getStock() < 1) {
+                System.out.println("Sorry, out of stock.");
+                // Call to purchase menu here
+                // will render break redundant
                 break;
-            }else if(!entry.contains(userInput)){
-                //System.out.println("false");
-                //break;
+            }
+            if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()) {
+                System.out.println("Insufficient funds.");
+                // Call to purchase menu here
+                // will render break redundant
+                break;
             }
 
-            // Invalid selection, stock irrelevant
-//            if(entry.contains(userInput)){
-//                System.out.println("Please make a valid selection.");
-//            }
         }
-    }
-
-    //A method for getting the relevant inventory information from a valid user selection
-    public String itemReader(String userChoice){
-        String name = "";
-        double price = 0.0;
-        String type = "";
-
-        //Loops through each row of the inventory file
-        //Then splits each part of the row into a String array
-        // Makes a switch specific iterator to fill the related item information
-
-        for (String item : testList) {
-            if(item.contains(userChoice)) {
-                lineSplit = item.split("\\|");
-                for (int i = 1; i < lineSplit.length; i++) {
-                    // i is initialized at 1 to ignore the [0] index, which is the vending code
-                    switch (i) {
-                        case 1:
-                            name = lineSplit[i];
-                            break;
-
-                        case 2:
-                            price = Double.parseDouble(lineSplit[i]);
-                            break;
-                        case 3:
-                            type = lineSplit[i];
-                    }
-                }
-            }
-        }
-        return name + " " + price + " " + type;
     }
 }

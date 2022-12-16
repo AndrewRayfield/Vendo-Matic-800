@@ -1,18 +1,70 @@
 package com.techelevator;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-public class ProductSelectionTest {
+public class ProductSelectionTest extends ProductSelection {
+
+    ProductSelection ps = new ProductSelection();
 
     @Test
-    public void ProductSelection(){
-        ProductSelection ps = new ProductSelection();
-        ps.fillProduct();
-        ps.userInput = "A2";
-        //ps.stock = 0;
+    public void validPurchaseTest() throws Exception{
+        ps = new ProductSelection(5);
+        ps.userInput = "B1";
         ps.selectProduct(ps.userInput);
-        //Assert.assertEquals(ps.dispenseItem(testCode));
+        System.out.println("");
+
     }
+
+    @Test
+    public void multiPurchaseTest() throws Exception{
+        ps = new ProductSelection(5);
+        ps.userInput = "A2";
+        ps.selectProduct(ps.userInput);
+
+        ps.userInput = "A1";
+        ps.selectProduct(ps.userInput);
+
+        System.out.println("");
+    }
+
+    @Test
+    public void lowFundsTest() throws Exception{
+        ps = new ProductSelection(5);
+        ps.userInput = "B1";
+        ps.selectProduct(ps.userInput);
+
+        ps.userInput = "A2";
+        ps.selectProduct(ps.userInput);
+
+        ps.userInput = "A1";
+        ps.selectProduct(ps.userInput);
+        System.out.println("");
+    }
+
+    @Test
+    public void noStockTest() throws Exception{
+        ps = new ProductSelection(5);
+        ps.userInput = "B4";
+
+        for(Items item : INVENTORY_ARRAY){
+            while (item.getLocation().equalsIgnoreCase(ps.userInput)) {
+                item.setStock(0);
+                ps.selectProduct(ps.userInput);
+                break;
+            }
+        }
+        //ps.selectProduct(ps.userInput);
+    }
+
+    @Test
+    public void validCheckTest() throws Exception{
+        ps.checkSelection("A1");
+    }
+
+    @Test
+    public void invalidCheckTest() throws Exception{
+        ps.checkSelection("G8");
+    }
+
 
 }
