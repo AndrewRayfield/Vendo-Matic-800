@@ -10,13 +10,14 @@ public class Items  {
     //private String typeOfProduct;
     private String location;
     //the stock should be in the inventory?
-    private int stock = MAX_STOCK;
+    private int stock;
 
     public Items(String name, double price, String location) {
         this.name = name;
         this.price = price;
         //this.typeOfProduct = typeOfProduct;
         this.location = location;
+        stock = MAX_STOCK;
     }
 
     public Items() {
@@ -46,7 +47,7 @@ public class Items  {
     @Override
     public String toString() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        return this.location + ") " + this.name + " " + currency.format(this.price);
+        return   this.name + " " + currency.format(this.price);
 
     }
     public  String dispensingMessage() {

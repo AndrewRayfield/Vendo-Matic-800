@@ -94,7 +94,7 @@ public class VendingMachineCLI {
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 						//Will you please explain this one?
-						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
+						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_MAP);
 
 						// Product Selection call here
 						//////////

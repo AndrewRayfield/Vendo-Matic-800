@@ -11,9 +11,11 @@ public class Inventory {
     static List<Items> inventoryList = new ArrayList<>();
 
     static Map <String, Items> inventoryMap = new TreeMap<>();
-    public static final Items[] INVENTORY_ARRAY = createAllInventory();
+    //public static final Items[] INVENTORY_ARRAY = createAllInventory();
+    public static final Map<String, Items> INVENTORY_MAP = createAllInventory();
 
-    private static Items[] createAllInventory() {
+    //private static Items[] createAllInventory() {
+    private static Map<String, Items> createAllInventory() {
 
 
         File inventory = new File ("vendingmachine.csv");
@@ -26,7 +28,6 @@ public class Inventory {
                 String productName = informationForTheProduct [1];
                 double productPrice = Double.parseDouble(informationForTheProduct [2]);
                 String productType = informationForTheProduct [3];
-                //System.out.println(productType);
 
                 // AE: Comment for my clarification: looks through techelevator package referencing productType
                 // Calls the constructor within the class of the item, building the parameters
@@ -34,25 +35,12 @@ public class Inventory {
                 Class<?> currentClass = Class.forName("com.techelevator."+productType);
                 Constructor<?> currentClassConstructor = currentClass.getConstructor(String.class,double.class, String.class);
                 Items newItem = (Items) currentClassConstructor.newInstance(productName,productPrice,productLocation);
-                //cl.newInstance();
-                //inventoryList.add (cl.getConstructor(productName, productPrice, productLocation);
 
-                //Items test = (Items) cl.newInstance();
-
-                //cl = (Class.forName(productName)) con.newInstance(productName,productPrice,productLocation);
-                //inventoryList.add(con.newInstance(productName,productPrice,productLocation);
                 //Items newItems = (Items) con.newInstance(productName,productPrice,productLocation);
                 //Items newItems = new Items (productName, productPrice, productType, productLocation);
                 inventoryList.add (newItem);
                 inventoryMap.put(productLocation,newItem);
 
-//                if (productType.equalsIgnoreCase("Chip")){
-//                    Chip newChip = new Chip(productName, productPrice, productLocation);
-//                    addToInventoryList(newChip);
-//                }
-//                else if (productType.equalsIgnoreCase("Candy")){
-//                    Candy newChip = new Candy(productName, productPrice, productLocation);
-//                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
@@ -70,12 +58,13 @@ public class Inventory {
 
 
         Items [] itemsArray = new Items [inventoryList.size ()];
-        return inventoryList.toArray(itemsArray);
+        //return inventoryList.toArray(itemsArray);
+        return inventoryMap;
     }
     public static void restock() {
-        for (Items items : INVENTORY_ARRAY) {
-            items.setStock(MAX_STOCK);
-        }
+//        for (Items items : INVENTORY_MAP) {
+//            items.setStock(MAX_STOCK);
+//        }
     }
     public static void displayInventory(){
         for (var entry : inventoryMap.entrySet()) {
