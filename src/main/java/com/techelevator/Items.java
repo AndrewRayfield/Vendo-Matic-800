@@ -44,10 +44,22 @@ public class Items  {
         return stock;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        return   this.name + " " + currency.format(this.price);
+        return location + ") " + this.name + " " + currency.format(this.price);
 
     }
     public  String dispensingMessage() {

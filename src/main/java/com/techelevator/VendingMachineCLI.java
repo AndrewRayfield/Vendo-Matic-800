@@ -50,7 +50,7 @@ public class VendingMachineCLI {
 
 		while (true) {
 			//Get choice using menu class
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items from Inventory class
@@ -66,7 +66,7 @@ public class VendingMachineCLI {
 
 					//Get choice using PurchaseMenu class
 					//getChoiceFromOptions is taking from Menu Class
-					String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+					String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS, true);
 
 					//Purchase option selection start
 					//Feed Money Option
@@ -75,7 +75,7 @@ public class VendingMachineCLI {
 						double moneyBefore = currentMoneyProvided;
 
 						//Does this need to be taken from Menu class?
-						String feedMoneyChoice = (String) menu.getChoiceFromOptions(FEED_MONEY_OPTIONS);
+						String feedMoneyChoice = (String) menu.getChoiceFromOptions(FEED_MONEY_OPTIONS, true);
 
 						/////Add money
 						if (feedMoneyChoice.equals(FEED_MONEY_1)) {
@@ -96,15 +96,15 @@ public class VendingMachineCLI {
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 						//Will you please explain this one?
-						//Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_MAP);
-						Inventory.displayInventory();
-						Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
+						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
+						//Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
 						//Calls the method in the menu class, scanning the user's choice within our inventory
 						//Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
 						//
 						ProductSelection ps = new ProductSelection(currentMoneyProvided);
 						//ps.checkSelection((itemsChoice.getLocation()));
+
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 						double moneyBefore = currentMoneyProvided;

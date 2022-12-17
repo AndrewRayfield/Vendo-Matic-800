@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.text.NumberFormat;
+import java.util.Map;
 
 public class ProductSelection extends Inventory{
 
@@ -25,7 +26,7 @@ public class ProductSelection extends Inventory{
     private double balance = 5.00;
     NumberFormat currency = NumberFormat.getCurrencyInstance();
 
-    Inventory inv = new Inventory();
+    //Inventory inv = new Inventory();
     ////////////////
     //Constructors//
     ////////////////
@@ -43,6 +44,7 @@ public class ProductSelection extends Inventory{
     //Methods//
     ///////////
 
+
     public void checkSelection(String selection){
         boolean valid = false;
         for(Items entry : INVENTORY_ARRAY) {
@@ -57,6 +59,9 @@ public class ProductSelection extends Inventory{
         }
 
     }
+
+
+
 
     public void selectProduct(String selection){
         // double reserved for adding to the log file
