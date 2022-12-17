@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.view.PurchaseMenu;
+
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -48,7 +50,6 @@ public class ProductSelection extends Inventory{
     public void checkSelection(String selection){
         boolean valid = false;
         for(Items entry : INVENTORY_ARRAY) {
-
             if (entry.getLocation().equalsIgnoreCase(selection)) {
                 valid = true;
                 selectProduct(selection);
@@ -61,12 +62,9 @@ public class ProductSelection extends Inventory{
 
     }
 
-    // A method for validating the user's selection
-    //if the selection is valid, will print the results from itemReader()
     public void selectProduct(String selection){
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("Please make a selection: ");
-        //userInput = sc.nextLine();
+        // double reserved for adding to the log file
+        double startBalance = balance;
 
         for(Items entry : INVENTORY_ARRAY){
             if(entry.getLocation().equalsIgnoreCase(selection) && entry.getStock() > 0 && balance >= entry.getPrice() ) {
@@ -74,7 +72,8 @@ public class ProductSelection extends Inventory{
                 System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
-                // Log the purchase here
+                LogUpdate.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
+                VendingMachineCLI.setNewBalance(balance);
                 // Call the purchase menu here
                 // will render break redundant
                 break;

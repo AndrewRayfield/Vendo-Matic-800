@@ -26,7 +26,11 @@ public class Inventory {
                 String productName = informationForTheProduct [1];
                 double productPrice = Double.parseDouble(informationForTheProduct [2]);
                 String productType = informationForTheProduct [3];
-                System.out.println(productType);
+                //System.out.println(productType);
+
+                // AE: Comment for my clarification: looks through techelevator package referencing productType
+                // Calls the constructor within the class of the item, building the parameters
+                // Creates the instance of the constructor with the built parameters, typeset as an Items class
                 Class<?> currentClass = Class.forName("com.techelevator."+productType);
                 Constructor<?> currentClassConstructor = currentClass.getConstructor(String.class,double.class, String.class);
                 Items newItem = (Items) currentClassConstructor.newInstance(productName,productPrice,productLocation);
@@ -68,7 +72,7 @@ public class Inventory {
         Items [] itemsArray = new Items [inventoryList.size ()];
         return inventoryList.toArray(itemsArray);
     }
-    public  void restock () {
+    public static void restock() {
         for (Items items : INVENTORY_ARRAY) {
             items.setStock(MAX_STOCK);
         }

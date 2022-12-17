@@ -28,6 +28,7 @@ public class VendingMachineCLI {
 	private static final String [] FEED_MONEY_OPTIONS = {FEED_MONEY_1,FEED_MONEY_2,FEED_MONEY_5,FEED_MONEY_10,FEED_MONEY_20};
 
 	/////////////////////////////
+	static double currentMoneyProvided = 0;
 
 
 	private Menu menu;
@@ -45,7 +46,6 @@ public class VendingMachineCLI {
 		salesReport.createReport();
 
 		//Does this need to be in another class?
-		double currentMoneyProvided = 0;
 
 		while (true) {
 			//Get choice using menu class
@@ -96,21 +96,24 @@ public class VendingMachineCLI {
 						//Will you please explain this one?
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
-						//Decides if product available or if there is enough money
-						// Out of stock message should be during product selection
-						if (itemsChoice.getStock() < 1) {
-							System.out.println("Product Is Out Of Stock");
-						} else if (currentMoneyProvided < itemsChoice.getPrice()) {
-							System.out.println("Not Enough Money Provided");
-						} else {
-							double moneyBefore = currentMoneyProvided;
-
-							System.out.println(itemsChoice.dispensingMessage());
-							itemsChoice.sellProduct();
-							salesReport.addToReport(itemsChoice.getName(), 1);
-							currentMoneyProvided -= itemsChoice.getPrice();
-							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
-						}
+						// Product Selection call here
+						//////////
+						ProductSelection ps = new ProductSelection(currentMoneyProvided);
+						ps.checkSelection((itemsChoice.getLocation()));
+//						if (itemsChoice.getStock() < 1) {
+//							System.out.println("Product Is Out Of Stock");
+//						} else if (currentMoneyProvided < itemsChoice.getPrice()) {
+//							System.out.println("Not Enough Money Provided");
+//						} else {
+//							double moneyBefore = currentMoneyProvided;
+//
+//							System.out.println(itemsChoice.dispensingMessage());
+//							itemsChoice.sellProduct();
+//							salesReport.addToReport(itemsChoice.getName(), 1);
+//							currentMoneyProvided -= itemsChoice.getPrice();
+//							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
+//						}
+						//////////
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 						double moneyBefore = currentMoneyProvided;
 
@@ -142,8 +145,13 @@ public class VendingMachineCLI {
 		return "Returning "+ numOfQuarters + " quarters, " + numOfDimes + " dimes, and " + numOfNickles + " nickles.";
 	}
 
+	//AE: Changes the balance from select product
+	// if/when we split the menu further or make a class for cash handling,
+	// this method can move into that class
+	public static void setNewBalance(double newBalance){
+		currentMoneyProvided = newBalance;
 
-
+	}
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
