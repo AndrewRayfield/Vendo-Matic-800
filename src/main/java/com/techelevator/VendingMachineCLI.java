@@ -4,6 +4,7 @@ import com.techelevator.view.Menu;
 import com.techelevator.view.PurchaseMenu;
 
 import java.text.NumberFormat;
+import java.util.Map;
 
 public class VendingMachineCLI {
 
@@ -94,15 +95,15 @@ public class VendingMachineCLI {
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 						//Will you please explain this one?
-						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_MAP);
-
-
+						//Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_MAP);
+						Inventory.displayInventory();
+						Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
 						//Calls the method in the menu class, scanning the user's choice within our inventory
 						//Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
 						//
 						ProductSelection ps = new ProductSelection(currentMoneyProvided);
-						ps.checkSelection((itemsChoice.getLocation()));
+						//ps.checkSelection((itemsChoice.getLocation()));
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 						double moneyBefore = currentMoneyProvided;

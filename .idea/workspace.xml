@@ -7,14 +7,14 @@
     <list default="true" id="797ea46f-ec1b-4322-b644-0621da05b76d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Log.txt" afterDir="false" />
-<<<<<<< HEAD
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" afterDir="false" />
-=======
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/LogUpdate.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" afterDir="false" />
->>>>>>> 3e6b2ca0fe49eb77c30287aae2b9d944587480c9
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/view/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/view/PurchaseMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/techelevator/LoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/LoggerTest.java" afterDir="false" />
