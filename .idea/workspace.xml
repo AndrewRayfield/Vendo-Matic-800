@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c1168c97-558d-432f-acdf-9b991f8f3624" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/techelevator/ProductSelectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/ProductSelectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/ProductSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/ProductSelection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/techelevator/ProductSelectionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/ProductSelectionTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,14 +39,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ash/Desktop/meritamerica/repos/ashton-erickson-student-exercises/05_Command_Line_Programs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Ash/Desktop/module-1-pair-programming-4"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JUnit.ProductSelectionTest">
     <configuration name="ProductSelectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module-1-capstone" />

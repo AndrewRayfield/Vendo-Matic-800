@@ -28,6 +28,19 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
+    public void multiPurchaseToLowFunds() throws Exception{
+        ps = new ProductSelection(5);
+        ps.userInput = "A2";
+        ps.selectProduct(ps.userInput);
+
+        ps.userInput = "A3";
+        ps.selectProduct(ps.userInput);
+
+        ps.userInput = "B2";
+        ps.selectProduct(ps.userInput);
+    }
+
+    @Test
     public void lowFundsTest() throws Exception{
         ps = new ProductSelection(5);
         ps.userInput = "B1";
