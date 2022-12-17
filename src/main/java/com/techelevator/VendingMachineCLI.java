@@ -81,6 +81,7 @@ public class VendingMachineCLI {
 						if (feedMoneyChoice.equals(FEED_MONEY_1)) {
 							currentMoneyProvided += 1.0;
 						} else if (feedMoneyChoice.equals(FEED_MONEY_2)) {
+
 							currentMoneyProvided += 2.0;
 						} else if (feedMoneyChoice.equals(FEED_MONEY_5)) {
 							currentMoneyProvided += 5.0;
