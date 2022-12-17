@@ -7,7 +7,7 @@ public class ProductSelectionTest extends ProductSelection {
     ProductSelection ps = new ProductSelection();
 
     @Test
-    public void validPurchaseTest() throws Exception{
+    public void validPurchaseTest(){
         ps = new ProductSelection(5);
         ps.userInput = "B1";
         ps.selectProduct(ps.userInput);
@@ -16,7 +16,7 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
-    public void multiPurchaseTest() throws Exception{
+    public void multiPurchaseTest(){
         ps = new ProductSelection(5);
         ps.userInput = "A2";
         ps.selectProduct(ps.userInput);
@@ -28,7 +28,7 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
-    public void multiPurchaseToLowFunds() throws Exception{
+    public void multiPurchaseToLowFunds(){
         ps = new ProductSelection(5);
         ps.userInput = "A2";
         ps.selectProduct(ps.userInput);
@@ -41,7 +41,7 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
-    public void lowFundsTest() throws Exception{
+    public void lowFundsTest(){
         ps = new ProductSelection(5);
         ps.userInput = "B1";
         ps.selectProduct(ps.userInput);
@@ -55,7 +55,7 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
-    public void noStockTest() throws Exception{
+    public void noStockTest(){
         ps = new ProductSelection(5);
         ps.userInput = "B4";
 
@@ -70,12 +70,12 @@ public class ProductSelectionTest extends ProductSelection {
     }
 
     @Test
-    public void validCheckTest() throws Exception{
+    public void validCheckTest(){
         ps.checkSelection("A1");
     }
 
     @Test
-    public void invalidCheckTest() throws Exception{
+    public void invalidCheckTest(){
         ps.checkSelection("G8");
     }
 

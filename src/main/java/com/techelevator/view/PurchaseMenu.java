@@ -5,49 +5,15 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class PurchaseMenu {
-    private PrintWriter out;
-    private Scanner in;
+public class PurchaseMenu extends Menu{
 
+    // AE: Simplified the purchase menu, previously it was a complete copy of our menu class
+    // this now extends menu and calls the super, allowing for easy constructor use
     public PurchaseMenu(InputStream input, OutputStream output) {
-        this.out = new PrintWriter(output);
-        this.in = new Scanner(input);
-    }
+        //this.out = new PrintWriter(output);
+        //this.in = new Scanner(input);
+        super(input, output);
 
-    public Object getChoiceFromOptions(Object[] options) {
-        Object choice = null;
-        while (choice == null) {
-            displayPurcaseMenuOptions(options);
-            choice = getChoiceFromUserInput(options);
-        }
-        return choice;
-    }
-
-    private Object getChoiceFromUserInput(Object[] options) {
-        Object choice = null;
-        String userInput = in.nextLine();
-        try {
-            int selectedOption = Integer.valueOf(userInput);
-            if (selectedOption > 0 && selectedOption <= options.length) {
-                choice = options[selectedOption - 1];
-            }
-        } catch (NumberFormatException e) {
-            // eat the exception, an error message will be displayed below since choice will be null
-        }
-        if (choice == null) {
-            out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator());
-        }
-        return choice;
-    }
-
-    private void displayPurcaseMenuOptions(Object[] options) {
-        out.println();
-        for (int i = 0; i < options.length; i++) {
-            int optionNum = i + 1;
-            out.println(optionNum + ") " + options[i]);
-        }
-        out.print(System.lineSeparator() + "Please choose an option >>> ");
-        out.flush();
     }
 }
 
