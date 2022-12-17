@@ -1,10 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.view.PurchaseMenu;
-
 import java.text.NumberFormat;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class ProductSelection extends Inventory{
 
@@ -72,23 +68,17 @@ public class ProductSelection extends Inventory{
                 System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
-                LogUpdate.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
+                Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
                 VendingMachineCLI.setNewBalance(balance);
-                // Call the purchase menu here
-                // will render break redundant
                 break;
 
             }
             if(entry.getLocation().equalsIgnoreCase(userInput) && entry.getStock() < 1) {
                 System.out.println("Sorry, out of stock.");
-                // Call to purchase menu here
-                // will render break redundant
                 break;
             }
             if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()) {
                 System.out.println("Insufficient funds.");
-                // Call to purchase menu here
-                // will render break redundant
                 break;
             }
 

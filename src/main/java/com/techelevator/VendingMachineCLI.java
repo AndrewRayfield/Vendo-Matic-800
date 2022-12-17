@@ -90,36 +90,23 @@ public class VendingMachineCLI {
 						}
 
 						//Logs starting amount and end amount in Log.txt
-						LogUpdate.log("Feed Money", moneyBefore, currentMoneyProvided);
+						Logger.log("FEED MONEY", moneyBefore, currentMoneyProvided);
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
-						//Will you please explain this one?
+
+						//Calls the method in the menu class, scanning the user's choice within our inventory
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
-						// Product Selection call here
-						//////////
+						//
 						ProductSelection ps = new ProductSelection(currentMoneyProvided);
 						ps.checkSelection((itemsChoice.getLocation()));
-//						if (itemsChoice.getStock() < 1) {
-//							System.out.println("Product Is Out Of Stock");
-//						} else if (currentMoneyProvided < itemsChoice.getPrice()) {
-//							System.out.println("Not Enough Money Provided");
-//						} else {
-//							double moneyBefore = currentMoneyProvided;
-//
-//							System.out.println(itemsChoice.dispensingMessage());
-//							itemsChoice.sellProduct();
-//							salesReport.addToReport(itemsChoice.getName(), 1);
-//							currentMoneyProvided -= itemsChoice.getPrice();
-//							LogUpdate.log(itemsChoice.getName() + " " + itemsChoice.getLocation(), moneyBefore, currentMoneyProvided);
-//						}
-						//////////
+
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 						double moneyBefore = currentMoneyProvided;
 
 						System.out.println(makeChange(currentMoneyProvided));
 						currentMoneyProvided = 0.0;
-						LogUpdate.log("give change", moneyBefore, currentMoneyProvided);
+						Logger.log("GIVE CHANGE", moneyBefore, currentMoneyProvided);
 						break;
 					}
 					//Purchase Option Selection end

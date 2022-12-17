@@ -7,9 +7,20 @@
     <list default="true" id="797ea46f-ec1b-4322-b644-0621da05b76d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/LogUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ProductSelection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/view/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/view/PurchaseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/techelevator/LoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/LoggerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/techelevator/ProductSelectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/ProductSelectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/LogUpdate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/ProductSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/ProductSelection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/PurchaseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/view/PurchaseMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/techelevator/LoggerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/LoggerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/techelevator/ProductSelectionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/ProductSelectionTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +34,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.LoggerTest">
+    <configuration name="LoggerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="module-1-capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.techelevator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.techelevator" />
+      <option name="MAIN_CLASS_NAME" value="com.techelevator.LoggerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductSelectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module-1-capstone" />
       <extension name="coverage">
@@ -41,6 +67,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoggerTest" />
         <item itemvalue="JUnit.ProductSelectionTest" />
       </list>
     </recent_temporary>
