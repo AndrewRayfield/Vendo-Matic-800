@@ -5,6 +5,9 @@ public class Gum extends Items {
         super(name, price, location);
     }
 
+    public Gum() {
+    }
+
     @Override
     public String dispensingMessage() {
         return "Glug Glug, Yum!";

@@ -5,6 +5,9 @@ public class Drink extends Items {
         super(name, price, location);
     }
 
+    public Drink() {
+    }
+
     @Override
     public String dispensingMessage() {
         return "Glug Glug, Yum!";
