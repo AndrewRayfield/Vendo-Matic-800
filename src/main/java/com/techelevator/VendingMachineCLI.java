@@ -97,13 +97,16 @@ public class VendingMachineCLI {
 					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 						//Will you please explain this one?
 						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
+						//String stringChoice = (String) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
 						//Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
 						//Calls the method in the menu class, scanning the user's choice within our inventory
-						//Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY);
 
-						//
+						// Creates instance of ProductSelection, taking the currently fed money in machine
+						// then validates the user selection as one that actually exists in the machine
+						//System.out.println();
 						ProductSelection ps = new ProductSelection(currentMoneyProvided);
-						//ps.checkSelection((itemsChoice.getLocation()));
+						//ps.checkSelection(stringChoice);
+						ps.checkSelection((itemsChoice.getLocation()));
 
 
 					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {

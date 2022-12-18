@@ -79,5 +79,11 @@ public class ProductSelectionTest extends ProductSelection {
         ps.checkSelection("G8");
     }
 
+    @Test
+    public void selectionTest(){
+        //ps.checkSelection();
+
+    }
+
 
 }

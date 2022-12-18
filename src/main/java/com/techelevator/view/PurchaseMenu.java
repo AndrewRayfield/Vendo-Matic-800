@@ -15,5 +15,6 @@ public class PurchaseMenu extends Menu{
         super(input, output);
 
     }
+
 }
 

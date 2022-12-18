@@ -41,7 +41,7 @@ public class Inventory {
                 //Items newItems = (Items) con.newInstance(productName,productPrice,productLocation);
                 //Items newItems = new Items (productName, productPrice, productType, productLocation);
                 inventoryList.add(newItem);
-                inventoryMap.put(productLocation, newItem);
+                //inventoryMap.put(productLocation, newItem);
 
             }
         } catch(Exception e){
