@@ -74,15 +74,17 @@ public class ProductSelection extends Inventory{
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
                 Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
+                SalesReport sr = new SalesReport();
+                sr.addToReport(entry.getName(), 1);
                 VendingMachineCLI.setNewBalance(balance);
                 break;
 
             }
-            if(entry.getLocation().equalsIgnoreCase(userInput) && entry.getStock() < 1) {
+            if(entry.getLocation().equalsIgnoreCase(selection) && entry.getStock() < 1) {
                 System.out.println("Sorry, out of stock.");
                 break;
             }
-            if(entry.getLocation().equalsIgnoreCase(userInput) && balance < entry.getPrice()) {
+            if(entry.getLocation().equalsIgnoreCase(selection) && balance < entry.getPrice()) {
                 System.out.println("Insufficient funds.");
                 break;
             }

@@ -59,6 +59,9 @@ public class Items  {
     @Override
     public String toString() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
+        if (stock == 0) {
+            return location + ") " + this.name + " " + currency.format(this.price) + " SOLD OUT";
+        }
         return location + ") " + this.name + " " + currency.format(this.price) + " " + stock + " Available";
 
     }
@@ -84,6 +87,7 @@ public class Items  {
     public void sellProduct (){
 
         this.stock -= 1;
+
 
 
     }
