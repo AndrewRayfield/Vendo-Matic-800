@@ -59,7 +59,7 @@ public class Items  {
     @Override
     public String toString() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        return location + ") " + this.name + " " + currency.format(this.price);
+        return location + ") " + this.name + " " + currency.format(this.price) + " " + stock + " Available";
 
     }
     public  String dispensingMessage() {
