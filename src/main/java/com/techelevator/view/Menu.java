@@ -1,21 +1,30 @@
 package com.techelevator.view;
 
-import com.techelevator.Inventory;
-import com.techelevator.Items;
+import com.techelevator.*;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Menu {
 
+	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
+	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
+	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
+	static double currentMoneyProvided = 0;
 	private PrintWriter out;
 	private Scanner in;
+
+	SalesReport salesReport = new SalesReport();
 
 	public Menu(InputStream input, OutputStream output) {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
+
 	}
 
 	//public Object getChoiceFromOptions(Object[] options) {
@@ -82,4 +91,26 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+
+	public void showMenu() {
+		while (true) {
+			//Get choice using menu class
+			String choice = (String) getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
+
+			PurchaseMenu purchaseMenu = new PurchaseMenu(System.in, System.out);
+
+			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+				// display vending machine items from Inventory class
+				Inventory.displayInventory();
+
+			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				purchaseMenu.showPurchaseMenu();
+			} else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
+				salesReport.displayReport();
+			} else {
+				System.exit(0);
+			}
+		}
+	}
+
 }

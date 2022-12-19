@@ -9,7 +9,6 @@ public class Items  {
     private double price;
     //private String typeOfProduct;
     private String location;
-    //the stock should be in the inventory?
     private int stock;
 
     public Items(String name, double price, String location) {
@@ -60,9 +59,9 @@ public class Items  {
     public String toString() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         if (stock == 0) {
-            return location + ") " + this.name + " " + currency.format(this.price) + " SOLD OUT";
+            return location + ") " + this.name + " " + currency.format(this.price) + " | SOLD OUT";
         }
-        return location + ") " + this.name + " " + currency.format(this.price) + " " + stock + " Available";
+        return location + ") " + this.name + " " + currency.format(this.price) + " | " + stock + " Available";
 
     }
     public  String dispensingMessage() {

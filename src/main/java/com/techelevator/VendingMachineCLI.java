@@ -7,151 +7,22 @@ import java.text.NumberFormat;
 import java.util.Map;
 
 public class VendingMachineCLI {
-
-	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
-	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
-	/////////////////////////////////
-	//Purchase Menu/////////////////
-	private static final String PURCHASE_MENU_FEED_MONEY = "Feed Money";
-	private static final String PURCHASE_MENU_SELECT_PRODUCT = "Select Product";
-	private static final String PURCHASE_MENU_FINISH_TRANSACTION = "Finish Transaction";
-	private static final String[] PURCHASE_MENU_OPTIONS = { PURCHASE_MENU_FEED_MONEY , PURCHASE_MENU_SELECT_PRODUCT, PURCHASE_MENU_FINISH_TRANSACTION };
-	///////////////Money option/////////////////
-	private static final String FEED_MONEY_1 = "$1";
-	private static final String FEED_MONEY_2 = "$2";
-	private static final String FEED_MONEY_5 = "$5";
-	private static final String FEED_MONEY_10 = "$10";
-
-	private static final String FEED_MONEY_20 = "$20";
-	private static final String [] FEED_MONEY_OPTIONS = {FEED_MONEY_1,FEED_MONEY_2,FEED_MONEY_5,FEED_MONEY_10,FEED_MONEY_20};
-
-	/////////////////////////////
-	static double currentMoneyProvided = 0;
-
-
 	private Menu menu;
-	private PurchaseMenu purchaseMenu;
 	private SalesReport salesReport = new SalesReport();
 
-	public VendingMachineCLI(Menu menu , PurchaseMenu purchaseMenu) {
+	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
-		this.purchaseMenu = purchaseMenu;
 	}
 
 	public void run() {
-		//Might need to be in ProductSelection Class?
 		Inventory.restock();
 		salesReport.createReport();
-
-		//Does this need to be in another class?
-
-		while (true) {
-			//Get choice using menu class
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
-
-			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items from Inventory class
-				Inventory.displayInventory();
-
-			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				//Used similarly to menu
-				// do purchase
-				while (true) {
-					//formatting money
-					NumberFormat currency = NumberFormat.getCurrencyInstance();
-					System.out.println("Current Money Provided: " + currency.format(currentMoneyProvided));
-
-					//Get choice using PurchaseMenu class
-					//getChoiceFromOptions is taking from Menu Class
-					String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS, true);
-
-					//Purchase option selection start
-					//Feed Money Option
-					if (purchaseChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
-						//Set to create a starting amount
-						double moneyBefore = currentMoneyProvided;
-
-						//Does this need to be taken from Menu class?
-						String feedMoneyChoice = (String) menu.getChoiceFromOptions(FEED_MONEY_OPTIONS, true);
-
-						/////Add money
-						if (feedMoneyChoice.equals(FEED_MONEY_1)) {
-							currentMoneyProvided += 1.0;
-						} else if (feedMoneyChoice.equals(FEED_MONEY_2)) {
-
-							currentMoneyProvided += 2.0;
-						} else if (feedMoneyChoice.equals(FEED_MONEY_5)) {
-							currentMoneyProvided += 5.0;
-						} else if (feedMoneyChoice.equals(FEED_MONEY_10)) {
-							currentMoneyProvided += 10.0;
-						} else if (feedMoneyChoice.equals(FEED_MONEY_20)) {
-							currentMoneyProvided += 20.0;
-						}
-
-						//Logs starting amount and end amount in Log.txt
-						Logger.log("FEED MONEY", moneyBefore, currentMoneyProvided);
-
-					} else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
-						//Will you please explain this one?
-						Items itemsChoice = (Items) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
-						//String stringChoice = (String) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
-						//Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
-						//Calls the method in the menu class, scanning the user's choice within our inventory
-
-						// Creates instance of ProductSelection, taking the currently fed money in machine
-						// then validates the user selection as one that actually exists in the machine
-						//System.out.println();
-						ProductSelection ps = new ProductSelection(currentMoneyProvided);
-						//ps.checkSelection(stringChoice);
-						ps.checkSelection((itemsChoice.getLocation()));
-
-
-					} else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
-						double moneyBefore = currentMoneyProvided;
-
-						System.out.println(makeChange(currentMoneyProvided));
-						currentMoneyProvided = 0.0;
-						Logger.log("GIVE CHANGE", moneyBefore, currentMoneyProvided);
-						break;
-					}
-					//Purchase Option Selection end
-				}
-			} else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){
-				salesReport.displayReport();
-			} else {
-				System.exit(0);
-			}
-		}
-	}
-	public static String makeChange (double moneyRemaining){
-		int moneyInCents = (int) (moneyRemaining * 100);
-
-		int numOfQuarters = moneyInCents / 25;
-		moneyInCents = moneyInCents % 25;
-
-		int numOfDimes = moneyInCents / 10;
-		moneyInCents = moneyInCents % 10;
-
-		int numOfNickles = moneyInCents / 5;
-
-		return "Returning "+ numOfQuarters + " quarters, " + numOfDimes + " dimes, and " + numOfNickles + " nickles.";
-	}
-
-	//AE: Changes the balance from select product
-	// if/when we split the menu further or make a class for cash handling,
-	// this method can move into that class
-	public static void setNewBalance(double newBalance){
-		currentMoneyProvided = newBalance;
-
+		menu.showMenu();
 	}
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
-		PurchaseMenu purchaseMenu = new PurchaseMenu(System.in, System.out);
-		VendingMachineCLI cli = new VendingMachineCLI(menu , purchaseMenu);
+		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
 	}
 }

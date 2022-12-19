@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import com.techelevator.view.Menu;
+import com.techelevator.view.PurchaseMenu;
+
 import java.text.NumberFormat;
 import java.util.Map;
 
@@ -60,9 +63,6 @@ public class ProductSelection extends Inventory{
 
     }
 
-
-
-
     public void selectProduct(String selection){
         // double reserved for adding to the log file
         double startBalance = balance;
@@ -76,7 +76,7 @@ public class ProductSelection extends Inventory{
                 Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
                 SalesReport sr = new SalesReport();
                 sr.addToReport(entry.getName(), 1);
-                VendingMachineCLI.setNewBalance(balance);
+                PurchaseMenu.setNewBalance(balance);
                 break;
 
             }
