@@ -94,15 +94,11 @@ public class Menu {
 
 	public void showMenu() {
 		while (true) {
-			//Get choice using menu class
 			String choice = (String) getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
-
 			PurchaseMenu purchaseMenu = new PurchaseMenu(System.in, System.out);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items from Inventory class
 				Inventory.displayInventory();
-
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				purchaseMenu.showPurchaseMenu();
 			} else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)){

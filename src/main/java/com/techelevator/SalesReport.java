@@ -5,8 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -15,6 +17,9 @@ public class SalesReport {
     public static Map<String, Integer> itemsSalesReport = new HashMap<>();
     public static Map<String, Double> itemPrice = new HashMap<>();
     public double totalSold = 0;
+    Date date = new Date() ;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+
 
     public void createReport() {
         int startingAmount = 0;
@@ -32,8 +37,8 @@ public class SalesReport {
         }
     }
 
-    public void addToReport(String name, int amount) {
-        int itemSold = amount + itemsSalesReport.get(name);
+    public void addToReport(String name) {
+        int itemSold = 1 + itemsSalesReport.get(name);
         totalSold += itemPrice.get(name);
 
         itemsSalesReport.put(name, itemSold);
@@ -41,7 +46,7 @@ public class SalesReport {
     }
 
     public void displayReport() {
-        File salesFile = new File("SalesReport"+ LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE) +".txt");
+        File salesFile = new File("SalesReport " + dateFormat.format(date) + ".txt");
         NumberFormat currency = NumberFormat.getCurrencyInstance();
 
         try(PrintWriter out = new PrintWriter(new FileOutputStream(salesFile))) {
@@ -53,7 +58,6 @@ public class SalesReport {
         } catch (IOException e) {
             System.out.println("File Not Found");
         }
-
     }
 
 }

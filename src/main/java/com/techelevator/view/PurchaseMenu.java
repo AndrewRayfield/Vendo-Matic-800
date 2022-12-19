@@ -33,26 +33,20 @@ public class PurchaseMenu extends Menu{
 
     public void showPurchaseMenu() {
         while (true) {
-            //formatting money
             NumberFormat currency = NumberFormat.getCurrencyInstance();
             System.out.println("Current Money Provided: " + currency.format(currentMoneyProvided));
 
-            //Get choice using PurchaseMenu class
-            //getChoiceFromOptions is taking from Menu Class
             String purchaseChoice = (String) getChoiceFromOptions(PURCHASE_MENU_OPTIONS, true);
 
-            //Purchase option selection start
             //Feed Money Option
             if (purchaseChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
                 double moneyBefore = currentMoneyProvided;
-
                 String feedMoneyChoice = (String) getChoiceFromOptions(FEED_MONEY_OPTIONS, true);
 
                 /////Add money
                 if (feedMoneyChoice.equals(FEED_MONEY_1)) {
                     currentMoneyProvided += 1.0;
                 } else if (feedMoneyChoice.equals(FEED_MONEY_2)) {
-
                     currentMoneyProvided += 2.0;
                 } else if (feedMoneyChoice.equals(FEED_MONEY_5)) {
                     currentMoneyProvided += 5.0;
@@ -67,9 +61,6 @@ public class PurchaseMenu extends Menu{
 
             } else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
                 Items itemsChoice = (Items) getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
-                //String stringChoice = (String) menu.getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
-                //Map<String, Items> itemsChoice = Inventory.INVENTORY_MAP;
-                //Calls the method in the menu class, scanning the user's choice within our inventory
 
                 // Creates instance of ProductSelection, taking the currently fed money in machine
                 // then validates the user selection as one that actually exists in the machine
@@ -84,6 +75,7 @@ public class PurchaseMenu extends Menu{
 
                 System.out.println(makeChange(currentMoneyProvided));
                 currentMoneyProvided = 0.0;
+
                 Logger.log("GIVE CHANGE", moneyBefore, currentMoneyProvided);
                 break;
             }

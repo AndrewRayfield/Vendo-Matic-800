@@ -75,7 +75,7 @@ public class ProductSelection extends Inventory{
                 entry.sellProduct();
                 Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
                 SalesReport sr = new SalesReport();
-                sr.addToReport(entry.getName(), 1);
+                sr.addToReport(entry.getName());
                 PurchaseMenu.setNewBalance(balance);
                 break;
 
