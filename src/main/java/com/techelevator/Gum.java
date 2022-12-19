@@ -10,6 +10,6 @@ public class Gum extends Items {
 
     @Override
     public String dispensingMessage() {
-        return "Glug Glug, Yum!";
+        return "Chew Chew, Yum";
     }
 }
