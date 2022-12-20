@@ -27,7 +27,7 @@ public class PurchaseMenuTest {
         Object[] options = new Object[] { Integer.valueOf(3), "Blind", "Mice" };
         Menu menu = getMenuForTesting();
 
-        menu.getChoiceFromOptions(options, true);
+        menu.getChoiceFromOptions(options, "Other");
 
         String expected = System.lineSeparator() + "1) " + options[0].toString() + System.lineSeparator() + "2) " + options[1].toString() + System.lineSeparator() + "3) "
                 + options[2].toString() + System.lineSeparator() + System.lineSeparator() + "Please choose an option >>> ";
@@ -40,7 +40,7 @@ public class PurchaseMenuTest {
         Integer[] options = new Integer[] { Integer.valueOf(123), expected, Integer.valueOf(789) };
         Menu menu = getMenuForTestingWithUserInput("2" + System.lineSeparator());
 
-        Integer result = (Integer) menu.getChoiceFromOptions(options, true);
+        Integer result = (Integer) menu.getChoiceFromOptions(options, "Other");
 
         Assert.assertEquals(expected, result);
     }
@@ -50,7 +50,7 @@ public class PurchaseMenuTest {
         Object[] options = new Object[] { "Larry", "Curly", "Moe" };
         Menu menu = getMenuForTestingWithUserInput("4" + System.lineSeparator() + "1" + System.lineSeparator());
 
-        menu.getChoiceFromOptions(options, true);
+        menu.getChoiceFromOptions(options, "Other");
 
         String menuDisplay = System.lineSeparator() + "1) " + options[0].toString() + System.lineSeparator() + "2) " + options[1].toString() + System.lineSeparator() + "3) "
                 + options[2].toString() + System.lineSeparator() + System.lineSeparator() + "Please choose an option >>> ";
@@ -65,7 +65,7 @@ public class PurchaseMenuTest {
         Object[] options = new Object[] { "Larry", "Curly", "Moe" };
         Menu menu = getMenuForTestingWithUserInput("0" + System.lineSeparator() + "1" + System.lineSeparator());
 
-        menu.getChoiceFromOptions(options, true);
+        menu.getChoiceFromOptions(options, "Other");
 
         String menuDisplay = System.lineSeparator() + "1) " + options[0].toString() + System.lineSeparator() + "2) " + options[1].toString() + System.lineSeparator() + "3) "
                 + options[2].toString() + System.lineSeparator() + System.lineSeparator() + "Please choose an option >>> ";
@@ -80,7 +80,7 @@ public class PurchaseMenuTest {
         Object[] options = new Object[] { "Larry", "Curly", "Moe" };
         Menu menu = getMenuForTestingWithUserInput("Mickey Mouse" + System.lineSeparator() + "1" + System.lineSeparator());
 
-        menu.getChoiceFromOptions(options, true);
+        menu.getChoiceFromOptions(options, "Other");
 
         String menuDisplay = System.lineSeparator() + "1) " + options[0].toString() + System.lineSeparator() + "2) " + options[1].toString() + System.lineSeparator() + "3) "
                 + options[2].toString() + System.lineSeparator() + System.lineSeparator() + "Please choose an option >>> ";

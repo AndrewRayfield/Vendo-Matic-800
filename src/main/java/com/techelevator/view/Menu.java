@@ -28,13 +28,15 @@ public class Menu {
 	}
 
 	//public Object getChoiceFromOptions(Object[] options) {
-	public Object getChoiceFromOptions(Object[] options, boolean isMainMenu) {
+	public Object getChoiceFromOptions(Object[] options, String whichMenu) {
 		Object choice = null;
 		while (choice == null) {
-			if (isMainMenu) {
+			if (whichMenu == "Menu") {
 				displayMenuOptions(options);
-			} else {
+			} else if(whichMenu == "Product Menu"){
 				displayProductOptions(options);
+			} else if(whichMenu == "Other") {
+				displayOtherOptions(options);
 			}
 			choice = getChoiceFromUserInput(options);
 		}
@@ -75,6 +77,19 @@ public class Menu {
 		out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
+
+			if(optionNum < 4) {
+				out.println(optionNum + ") " + options[i]);
+			}
+		}
+		out.print(System.lineSeparator() + "Please choose an option >>> ");
+		out.flush();
+	}
+
+	private void displayOtherOptions(Object[] options) {
+		out.println();
+		for (int i = 0; i < options.length; i++) {
+			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
 		}
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
@@ -94,7 +109,7 @@ public class Menu {
 
 	public void showMenu() {
 		while (true) {
-			String choice = (String) getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
+			String choice = (String) getChoiceFromOptions(MAIN_MENU_OPTIONS, "Menu");
 			PurchaseMenu purchaseMenu = new PurchaseMenu(System.in, System.out);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {

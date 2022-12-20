@@ -36,12 +36,12 @@ public class PurchaseMenu extends Menu{
             NumberFormat currency = NumberFormat.getCurrencyInstance();
             System.out.println("Current Money Provided: " + currency.format(currentMoneyProvided));
 
-            String purchaseChoice = (String) getChoiceFromOptions(PURCHASE_MENU_OPTIONS, true);
+            String purchaseChoice = (String) getChoiceFromOptions(PURCHASE_MENU_OPTIONS, "Other");
 
             //Feed Money Option
             if (purchaseChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
                 double moneyBefore = currentMoneyProvided;
-                String feedMoneyChoice = (String) getChoiceFromOptions(FEED_MONEY_OPTIONS, true);
+                String feedMoneyChoice = (String) getChoiceFromOptions(FEED_MONEY_OPTIONS, "Other");
 
                 /////Add money
                 if (feedMoneyChoice.equals(FEED_MONEY_1)) {
@@ -60,7 +60,7 @@ public class PurchaseMenu extends Menu{
                 Logger.log("FEED MONEY", moneyBefore, currentMoneyProvided);
 
             } else if (purchaseChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
-                Items itemsChoice = (Items) getChoiceFromOptions(Inventory.INVENTORY_ARRAY, false);
+                Items itemsChoice = (Items) getChoiceFromOptions(Inventory.INVENTORY_ARRAY, "Product Menu");
 
                 // Creates instance of ProductSelection, taking the currently fed money in machine
                 // then validates the user selection as one that actually exists in the machine
