@@ -19,12 +19,9 @@ public class VendingMachineCLI {
 		salesReport.createReport();
 		menu.showMenu();
 	}
-
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
 	}
 }
-
-

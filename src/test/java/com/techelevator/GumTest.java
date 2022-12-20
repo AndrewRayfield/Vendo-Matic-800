@@ -9,11 +9,11 @@ public class GumTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        gum = new Gum("gum", 1.00, "A1");
+        gum = new Gum();
     }
 
     public void testDispensingMessage() {
-        String expected = "Glug Glug, Yum!";
+        String expected = "Chew Chew, Yum";
         Assert.assertEquals(expected, gum.dispensingMessage());
     }
 }

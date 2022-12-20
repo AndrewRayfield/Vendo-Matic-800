@@ -52,23 +52,6 @@ public class Inventory {
         //return inventoryMap;
         }
 
-//        } catch (FileNotFoundException e) {
-//            System.out.println("file not found");
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (NoSuchMethodException e) {
-//            throw new RuntimeException(e);
-//        } catch (InvocationTargetException e) {
-//            throw new RuntimeException(e);
-//        } catch (InstantiationException e) {
-//            throw new RuntimeException(e);
-//        } catch (IllegalAccessException e) {
-//            throw new RuntimeException(e);
-//        }
-
-
-
-
     public static void restock() {
 //        for (Items items : INVENTORY_MAP) {
 //            items.setStock(MAX_STOCK);

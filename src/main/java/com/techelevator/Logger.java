@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Logger {
-
     public static void log(String action, double moneyBefore, double moneyAfter) {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
@@ -25,8 +24,4 @@ public class Logger {
             System.out.println("File Not Found");
         }
     }
-
-
-
 }
-
