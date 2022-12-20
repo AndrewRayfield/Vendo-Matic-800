@@ -42,7 +42,6 @@ public class SalesReport {
         totalSold += itemPrice.get(name);
 
         itemsSalesReport.put(name, itemSold);
-
     }
 
     public void displayReport() {

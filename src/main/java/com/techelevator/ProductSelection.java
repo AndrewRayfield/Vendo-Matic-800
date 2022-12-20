@@ -28,6 +28,7 @@ public class ProductSelection extends Inventory{
     public String userInput;
     private double balance = 5.00;
     NumberFormat currency = NumberFormat.getCurrencyInstance();
+    SalesReport sr = new SalesReport();
 
     //Inventory inv = new Inventory();
     ////////////////
@@ -74,7 +75,6 @@ public class ProductSelection extends Inventory{
                 System.out.println(entry.dispensingMessage());
                 entry.sellProduct();
                 Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
-                SalesReport sr = new SalesReport();
                 sr.addToReport(entry.getName());
                 PurchaseMenu.setNewBalance(balance);
                 break;

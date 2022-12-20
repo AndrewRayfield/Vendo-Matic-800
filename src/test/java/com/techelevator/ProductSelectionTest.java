@@ -5,18 +5,20 @@ import org.junit.Test;
 public class ProductSelectionTest extends ProductSelection {
 
     ProductSelection ps = new ProductSelection();
+    SalesReport sr = new SalesReport();
 
     @Test
     public void validPurchaseTest(){
+        sr.createReport();
         ps = new ProductSelection(5);
         ps.userInput = "B1";
         ps.selectProduct(ps.userInput);
         System.out.println("");
-
     }
 
     @Test
     public void multiPurchaseTest(){
+        sr.createReport();
         ps = new ProductSelection(5);
         ps.userInput = "A2";
         ps.selectProduct(ps.userInput);
@@ -29,6 +31,7 @@ public class ProductSelectionTest extends ProductSelection {
 
     @Test
     public void multiPurchaseToLowFunds(){
+        sr.createReport();
         ps = new ProductSelection(5);
         ps.userInput = "A2";
         ps.selectProduct(ps.userInput);
@@ -42,6 +45,7 @@ public class ProductSelectionTest extends ProductSelection {
 
     @Test
     public void lowFundsTest(){
+        sr.createReport();
         ps = new ProductSelection(5);
         ps.userInput = "B1";
         ps.selectProduct(ps.userInput);
@@ -71,6 +75,7 @@ public class ProductSelectionTest extends ProductSelection {
 
     @Test
     public void validCheckTest(){
+        sr.createReport();
         ps.checkSelection("A1");
     }
 

@@ -38,12 +38,10 @@ public class PurchaseMenu extends Menu{
 
             String purchaseChoice = (String) getChoiceFromOptions(PURCHASE_MENU_OPTIONS, "Other");
 
-            //Feed Money Option
             if (purchaseChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
                 double moneyBefore = currentMoneyProvided;
                 String feedMoneyChoice = (String) getChoiceFromOptions(FEED_MONEY_OPTIONS, "Other");
 
-                /////Add money
                 if (feedMoneyChoice.equals(FEED_MONEY_1)) {
                     currentMoneyProvided += 1.0;
                 } else if (feedMoneyChoice.equals(FEED_MONEY_2)) {
@@ -64,11 +62,8 @@ public class PurchaseMenu extends Menu{
 
                 // Creates instance of ProductSelection, taking the currently fed money in machine
                 // then validates the user selection as one that actually exists in the machine
-                //System.out.println();
                 ProductSelection ps = new ProductSelection(currentMoneyProvided);
-                //ps.checkSelection(stringChoice);
                 ps.checkSelection((itemsChoice.getLocation()));
-
 
             } else if (purchaseChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
                 double moneyBefore = currentMoneyProvided;
