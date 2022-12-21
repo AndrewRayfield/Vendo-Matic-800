@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class SalesReport {
     public static Map<String, Integer> itemsSalesReport = new HashMap<>();
     public static Map<String, Double> itemPrice = new HashMap<>();
-    public double totalSold = 0;
+    public static double totalSold;
     Date date = new Date() ;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
 
