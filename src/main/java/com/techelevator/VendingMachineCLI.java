@@ -15,7 +15,6 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
-		Inventory.restock();
 		salesReport.createReport();
 		menu.showMenu();
 	}

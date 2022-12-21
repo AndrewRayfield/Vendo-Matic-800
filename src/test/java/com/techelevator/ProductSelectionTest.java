@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import org.junit.Test;
+import org.mockito.internal.matchers.Null;
 
 public class ProductSelectionTest extends ProductSelection {
 
@@ -33,14 +34,14 @@ public class ProductSelectionTest extends ProductSelection {
     public void multiPurchaseToLowFunds(){
         sr.createReport();
         ps = new ProductSelection(5);
-        ps.userInput = "A2";
-        ps.selectProduct(ps.userInput);
+        //String test = "A2";
+        ps.selectProduct("A2");
 
-        ps.userInput = "A3";
-        ps.selectProduct(ps.userInput);
+        //ps.userInput = "A3";
+        ps.selectProduct("A3");
 
-        ps.userInput = "B2";
-        ps.selectProduct(ps.userInput);
+        //ps.userInput = "B2";
+        ps.selectProduct("B2");
     }
 
     @Test
@@ -84,11 +85,11 @@ public class ProductSelectionTest extends ProductSelection {
         ps.checkSelection("G8");
     }
 
-    @Test
-    public void selectionTest(){
-        //ps.checkSelection();
-
-    }
+//    @Test
+//    public void selectionTest(){
+//        //ps.checkSelection();
+//
+//    }
 
 
 }

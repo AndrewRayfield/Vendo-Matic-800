@@ -10,17 +10,14 @@ public class Inventory {
     private static final int MAX_STOCK = 5;
     static List<Items> inventoryList = new ArrayList<>();
 
-    static Map <String, Items> inventoryMap = new TreeMap<>();
     public static final Items[] INVENTORY_ARRAY = createAllInventory();
-    //public static final Map<String, Items> INVENTORY_MAP = createAllInventory();
 
     private static Items[] createAllInventory() {
-    //private static Map<String, Items> createAllInventory() {
 
 
-        File inventory = new File ("vendingmachine.csv");
+        File inventory = new File("vendingmachine.csv");
 
-        try (Scanner inventoryReader = new Scanner (inventory)) {
+        try (Scanner inventoryReader = new Scanner(inventory)) {
             while (inventoryReader.hasNextLine()) {
                 String lineOfText = inventoryReader.nextLine();
                 String[] informationForTheProduct = lineOfText.split("\\|");
@@ -38,35 +35,24 @@ public class Inventory {
                 Constructor<?> currentClassConstructor = currentClass.getConstructor(String.class, double.class, String.class);
                 Items newItem = (Items) currentClassConstructor.newInstance(productName, productPrice, productLocation);
 
-                //Items newItems = (Items) con.newInstance(productName,productPrice,productLocation);
-                //Items newItems = new Items (productName, productPrice, productType, productLocation);
+
                 inventoryList.add(newItem);
-                //inventoryMap.put(productLocation, newItem);
 
             }
-        } catch(Exception e){
-                throw new RuntimeException(e.getMessage());
-            }
-        Items [] itemsArray = new Items [inventoryList.size ()];
-        return inventoryList.toArray(itemsArray);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
-
-    public static void restock() {
-//        for (Items items : INVENTORY_MAP) {
-//            items.setStock(MAX_STOCK);
-//        }
+        Items[] itemsArray = new Items[inventoryList.size()];
+        return inventoryList.toArray(itemsArray);
     }
-    public static void displayInventory(){
-//        for (var entry : inventoryMap.entrySet()) {
-//            System.out.println(entry.getKey() + ") " + entry.getValue());
-//        }
+
+
+    public static void displayInventory() {
+
         for (Items items : INVENTORY_ARRAY) {
             System.out.println(items);
         }
     }
-private static void addToInventoryList(Items item){
-    inventoryList.add (item);
 }
 
-}
 
