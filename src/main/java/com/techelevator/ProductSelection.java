@@ -30,7 +30,6 @@ public class ProductSelection extends Inventory{
     NumberFormat currency = NumberFormat.getCurrencyInstance();
     SalesReport sr = new SalesReport();
 
-    //Inventory inv = new Inventory();
     ////////////////
     //Constructors//
     ////////////////

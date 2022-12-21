@@ -7,14 +7,12 @@ public class Items  {
     private final int MAX_STOCK = 5;
     private String name;
     private double price;
-    //private String typeOfProduct;
     private String location;
     private int stock;
 
     public Items(String name, double price, String location) {
         this.name = name;
         this.price = price;
-        //this.typeOfProduct = typeOfProduct;
         this.location = location;
         stock = MAX_STOCK;
     }
@@ -31,9 +29,6 @@ public class Items  {
         return price;
     }
 
-//    public String getTypeOfProduct() {
-//        return typeOfProduct;
-//    }
 
     public String getLocation() {
         return location;
@@ -67,21 +62,7 @@ public class Items  {
     public  String dispensingMessage() {
         return "";
     }
-//        if (typeOfProduct.equalsIgnoreCase("Chip")) {
-//            return "Crunch Crunch, Yum!";
-//        }
-//        else if (typeOfProduct.equalsIgnoreCase("Candy")) {
-//            return "Munch Munch, Yum!"; }
-//
-//        else if (typeOfProduct.equalsIgnoreCase("Drink")) {
-//            return "Glug Glug, Yum!"; }
-//
-//        else if (typeOfProduct.equalsIgnoreCase("Gum")) {
-//            return "Chew Chew, Yum!"; }
-//
-//        else {
-//            return "Do Not Have Type";
-//        }
+
 
     public void sellProduct (){
 
