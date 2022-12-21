@@ -38,10 +38,15 @@ public class SalesReport {
     }
 
     public void addToReport(String name) {
-        int itemSold = 1 + itemsSalesReport.get(name);
-        totalSold += itemPrice.get(name);
 
-        itemsSalesReport.put(name, itemSold);
+        try {
+            int itemSold = 1 + itemsSalesReport.get(name);
+            totalSold += itemPrice.get(name);
+
+            itemsSalesReport.put(name, itemSold);
+        } catch(Exception e) {
+            System.out.println("That is not in our inventory.");
+        }
     }
 
     public void displayReport() {
