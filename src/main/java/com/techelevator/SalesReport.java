@@ -6,15 +6,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class SalesReport {
-    public static Map<String, Integer> itemsSalesReport = new HashMap<>();
+    public static Map<String, Integer> itemsSalesReport = new LinkedHashMap<>();
     public static Map<String, Double> itemPrice = new HashMap<>();
     public static double totalSold;
     Date date = new Date() ;

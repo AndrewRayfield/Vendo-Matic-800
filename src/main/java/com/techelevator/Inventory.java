@@ -26,18 +26,9 @@ public class Inventory {
                 double productPrice = Double.parseDouble(informationForTheProduct[2]);
                 String productType = informationForTheProduct[3];
 
-                Items items = new Items();
-                items.setName(productName);
-                // AE: Comment for my clarification: looks through techelevator package referencing productType
-                // Calls the constructor within the class of the item, building the parameters
-                // Creates the instance of the constructor with the built parameters, typeset as an Items class
-                Class<?> currentClass = Class.forName("com.techelevator." + productType);
-                Constructor<?> currentClassConstructor = currentClass.getConstructor(String.class, double.class, String.class);
-                Items newItem = (Items) currentClassConstructor.newInstance(productName, productPrice, productLocation);
+                Items myItem = new Items(productName, productPrice, productLocation);
 
-
-                inventoryList.add(newItem);
-
+                inventoryList.add(myItem);
             }
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
