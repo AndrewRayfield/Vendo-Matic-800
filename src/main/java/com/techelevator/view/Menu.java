@@ -15,7 +15,7 @@ public class Menu {
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
-	static double currentMoneyProvided = 0;
+	public static double currentMoneyProvided = 0;
 	private PrintWriter out;
 	private Scanner in;
 

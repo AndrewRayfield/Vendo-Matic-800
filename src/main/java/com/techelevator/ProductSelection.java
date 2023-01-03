@@ -29,6 +29,7 @@ public class ProductSelection extends Inventory{
     private double balance = 5.00;
     NumberFormat currency = NumberFormat.getCurrencyInstance();
     SalesReport sr = new SalesReport();
+    PurchaseMenuApp purchaseMenuApp = new PurchaseMenuApp();
 
     ////////////////
     //Constructors//
@@ -70,8 +71,8 @@ public class ProductSelection extends Inventory{
         for(Items entry : INVENTORY_ARRAY){
             if(entry.getLocation().equalsIgnoreCase(selection) && entry.getStock() > 0 && balance >= entry.getPrice() ) {
                 balance -= entry.getPrice();
-                System.out.println("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance));
-                System.out.println(entry.dispensingMessage());
+                purchaseMenuApp.writeText("Purchased: " + entry.getName() + " | Price: " + currency.format(entry.getPrice()) + " | Remaining: " + currency.format(balance) + "\n"
+                + "\t\t    " + entry.dispensingMessage());
                 entry.sellProduct();
                 Logger.log(entry.getName() + " " + entry.getLocation(), startBalance, balance);
                 sr.addToReport(entry.getName());

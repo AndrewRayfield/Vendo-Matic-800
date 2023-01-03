@@ -19,6 +19,7 @@ public class VendingMachineCLI {
 		menu.showMenu();
 	}
 	public static void main(String[] args) {
+		App app = new App();
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
